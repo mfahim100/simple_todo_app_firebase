@@ -17,7 +17,7 @@ class LastTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 65.w,
+      width: 80.w,
       child: Row(
         children: [
           Text(text, style: ConstTextStyles.lastTextButton),

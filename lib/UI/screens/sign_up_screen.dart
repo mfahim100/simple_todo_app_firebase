@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:simple_todo_app_firebase/UI/screens/home_screen.dart';
-import 'package:simple_todo_app_firebase/UI/screens/sign_up_screen.dart';
-import 'package:simple_todo_app_firebase/UI/widgets/cloud_buttons.dart';
-import 'package:simple_todo_app_firebase/UI/widgets/custom_button.dart';
-import 'package:simple_todo_app_firebase/UI/widgets/last_text_button.dart';
-import 'package:simple_todo_app_firebase/UI/widgets/sign_in_screen_textfield.dart';
-import 'package:simple_todo_app_firebase/core/constants/constant_container_styles.dart';
-import '../../core/constants/constant_text_styles.dart';
+import 'package:simple_todo_app_firebase/UI/screens/log_in_screen.dart';
 
-class LogInScreen extends StatelessWidget {
-  const LogInScreen({super.key});
+import '../../core/constants/constant_container_styles.dart';
+import '../../core/constants/constant_text_styles.dart';
+import '../widgets/cloud_buttons.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/last_text_button.dart';
+import '../widgets/sign_in_screen_textfield.dart';
+
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +28,15 @@ class LogInScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 100.w,
-                  height: 43.h,
+                  height: 35.h,
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 35.h,
+                        height: 25.h,
                         child: const Image(
                           fit: BoxFit.fill,
-                          image: AssetImage('assets/images/login-removebg.png'),
+                          image:
+                              AssetImage('assets/images/signup-removebg.png'),
                         ),
                       ),
                       SizedBox(
@@ -57,7 +58,7 @@ class LogInScreen extends StatelessWidget {
                 SingleChildScrollView(
                   child: Container(
                     width: 100.w,
-                    height: 55.h,
+                    height: 62.h,
                     decoration: ConstContainerStyles.loginContainerStyle,
                     child: Form(
                       child: Column(
@@ -67,6 +68,14 @@ class LogInScreen extends StatelessWidget {
                           ),
                           SignInScreenTextField(
                             prefixIcon: const Icon(Icons.person),
+                            hintText: 'Enter Your Name',
+                            labelText: 'Enter Your Name',
+                          ),
+                          SizedBox(
+                            height: 1.h,
+                          ),
+                          SignInScreenTextField(
+                            prefixIcon: const Icon(Icons.email),
                             hintText: 'Enter Your Email',
                             labelText: 'Enter Your Email',
                           ),
@@ -82,16 +91,12 @@ class LogInScreen extends StatelessWidget {
                           SizedBox(
                             height: 2.h,
                           ),
-                          CustomButton(text: 'Sign In', onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                              return  const HomeScreen();
-                            }));
-                          }),
+                          CustomButton(text: 'Sign Up', onPressed: () {}),
                           SizedBox(
                             height: 3.h,
                           ),
                           CloudButtons(
-                            text: 'Sign in Using',
+                            text: 'Sign Up Using',
                             onFaceBookPressed: () {},
                             onGooglePressed: () {},
                             onApplePressed: () {},
@@ -100,14 +105,14 @@ class LogInScreen extends StatelessWidget {
                             height: 2.h,
                           ),
                           LastTextButton(
-                            text: 'Do You have Account ?',
-                            buttonText: 'Register here',
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                                return const SignUpScreen();
-                              }));
-                            },
-                          )
+                              text: 'Already have Account ?',
+                              buttonText: 'Click To Login',
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return const LogInScreen();
+                                }));
+                              })
                         ],
                       ),
                     ),
